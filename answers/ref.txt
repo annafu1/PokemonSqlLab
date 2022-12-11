@@ -6,8 +6,30 @@
 | trainers          |
 | types             |
 +-------------------+
-# trainer table has trainerID, trainername
-#pokemon_trainer table has trainerID, pokelevel,hp, maxhp, attack, defense, spatk, spdef, speed, pokemon_id
+
+# trainer table
++-------------+------+------+-----+---------+-------+
+| Field       | Type | Null | Key | Default | Extra |
++-------------+------+------+-----+---------+-------+
+| trainerID   | int  | NO   | PRI | NULL    |       |
+| trainername | text | YES  |     | NULL    |       |
++-------------+------+------+-----+---------+-------+
+
+#pokemon_trainer table
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| trainerID  | int  | YES  |     | NULL    |       |
+| pokelevel  | int  | YES  |     | NULL    |       |
+| hp         | int  | YES  |     | NULL    |       |
+| maxhp      | int  | YES  |     | NULL    |       |
+| attack     | int  | YES  |     | NULL    |       |
+| defense    | int  | YES  |     | NULL    |       |
+| spatk      | int  | YES  |     | NULL    |       |
+| spdef      | int  | YES  |     | NULL    |       |
+| speed      | int  | YES  |     | NULL    |       |
+| pokemon_id | int  | YES  |     | NULL    |       |
++------------+------+------+-----+---------+-------+
 
 #List of pokemons
 +-----+-------------+--------------+----------------+
