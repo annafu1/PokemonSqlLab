@@ -15,15 +15,28 @@ SELECT COUNT(secondary_type) FROM pokemons;
 
 # What is each pokemon's primary type?
 SELECT pokemons.name Pokemon_Name, types.name primary_type FROM pokemons JOIN types on pokemons.primary_type = types.id;
+
 # What is Rufflet's secondary type?
 SELECT pokemons.name, types.name secondary_type FROM pokemons JOIN types on pokemon.secondary_type = types.id WHERE pokemon.name = "Rufflet";
+
 # What are the names of the pokemon that belong to the trainer with trainerID 303?
 SELECT names as Pokemon_name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
+
 # How many pokemon have a secondary type Poison
 SELECT count(pokemon.pokemons.name) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.secondary_type = pokemon.types.id WHERE pokemon.types.name = "Poison";
+
 # What are all the primary types and how many pokemon have that type?
+SELECT pokemon.types.name, COUNT(*) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.primary_type = pokemon.types.id GROUP BY pokemon.types.name;
 
 # How many pokemon at level 100 does each trainer with at least one level 100 pokemone have? (Hint: your query should not display a trainer
+SELECT COUNT(*), pokemon_trainer.pokelevel FROM pokemon_trainer JOIN trainers ON pokemon_trainer.pokemon_id = trainers.trainerID WHERE pokemon_trainer.pokelevel = 100 GROUP BY pokemon_trainer.pokelevel;
 
 # How many pokemon only belong to one trainer and no other?
+SELECT pokemon_id, COUNT(*) FROM pokemon_trainer GROUP BY pokemon_id HAVING COUNT(pokemon_id) = 1;
 
+Part 4
+SELECT trainers.trainername 'Trainer', pokemons.name 'Pokemon', pokemon_trainer.pokelevel 'Level', p_types.name 'Primary Type', s_types.name 'Secondary Type' FROM pokemons JOIN types pokemon_types
+ON pokemons.primary_type = pokemon_types.id LEFT JOIN types s_types ON pokemons.secondary_type = s_types.id
+JOIN pokemon_trainer ON pokemons.id = pokemon_trainer.pokemon_id
+JOIN trainers ON pokemon_trainer.trainerID = trainers.trainerid
+ORDER BY pokelevel & speed DESC;
