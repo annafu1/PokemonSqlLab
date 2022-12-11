@@ -14,10 +14,10 @@ SELECT COUNT(*) FROM types;
 SELECT COUNT(*) FROM pokemons WHERE secondary_type IS NOT null;
 
 # What is each pokemon's primary type?
-SELECT pokemons.name, types.name FROM pokemons JOIN types on pokemons.primary_type = types.id;
+SELECT pokemons.name, types.name FROM pokemons JOIN types ON pokemons.primary_type = types.id;
 
 # What is Rufflet's secondary type?
-SELECT pokemons.name, types.name FROM pokemons JOIN types on pokemons.secondary_type = types.id WHERE pokemons.name = 'Rufflet';
+SELECT pokemons.name, types.name FROM pokemons JOIN types ON pokemons.secondary_type = types.id WHERE pokemons.name = 'Rufflet';
 
 # What are the names of the pokemon that belong to the trainer with trainerID 303?
 SELECT pokemons.name FROM pokemons JOIN pokemon_trainer as trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
@@ -40,4 +40,4 @@ SELECT trainers.trainername 'Trainer', pokemons.name 'Pokemon', pokemon_trainer.
 ON pokemons.primary_type = pokemon_types.id LEFT JOIN types s_types ON pokemons.secondary_type = s_types.id
 JOIN pokemon_trainer ON pokemons.id = pokemon_trainer.pokemon_id
 JOIN trainers ON pokemon_trainer.trainerID = trainers.trainerid
-ORDER BY pokelevel & speed DESC;
+ORDER BY pokelevel DESC & speed DESC;
