@@ -20,7 +20,7 @@ SELECT pokemons.name Pokemon_Name, types.name primary_type FROM pokemons JOIN ty
 SELECT pokemons.name, types.name secondary_type FROM pokemons JOIN types on pokemon.secondary_type = types.id WHERE pokemon.name = "Rufflet";
 
 # What are the names of the pokemon that belong to the trainer with trainerID 303?
-SELECT name as Pokemon_name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
+SELECT name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
 
 # How many pokemon have a secondary type Poison
 SELECT COUNT(pokemon.pokemons.name) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.secondary_type = pokemon.types.id WHERE pokemon.types.name = "Poison";
