@@ -23,7 +23,7 @@ SELECT pokemons.name, types.name secondary_type FROM pokemons JOIN types on poke
 SELECT name as Pokemon_name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
 
 # How many pokemon have a secondary type Poison
-SELECT count(pokemon.pokemons.name) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.secondary_type = pokemon.types.id WHERE pokemon.types.name = "Poison";
+SELECT COUNT(pokemon.pokemons.name) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.secondary_type = pokemon.types.id WHERE pokemon.types.name = "Poison";
 
 # What are all the primary types and how many pokemon have that type?
 SELECT pokemon.types.name, COUNT(*) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.primary_type = pokemon.types.id GROUP BY pokemon.types.name;
