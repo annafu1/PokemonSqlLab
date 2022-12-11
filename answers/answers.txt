@@ -20,13 +20,14 @@ SELECT pokemons.name Pokemon_Name, types.name primary_type FROM pokemons JOIN ty
 SELECT pokemons.name, types.name secondary_type FROM pokemons JOIN types on pokemon.secondary_type = types.id WHERE pokemon.name = "Rufflet";
 
 # What are the names of the pokemon that belong to the trainer with trainerID 303?
-SELECT name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
+SELECT name as Pokemon_name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
+SELECT name FROM pokemons JOIN pokemon_trainer on pokemons.id = pokemon_id WHERE trainerID = 303;
 
 # How many pokemon have a secondary type Poison
-SELECT COUNT(pokemon.pokemons.name) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.secondary_type = pokemon.types.id WHERE pokemon.types.name = "Poison";
+SELECT COUNT(pokemons.name) FROM pokemons INNER JOIN pokemon.types ON pokemons.secondary_type = pokemon.types.id WHERE pokemon.types.name = "Poison";
 
 # What are all the primary types and how many pokemon have that type?
-SELECT pokemon.types.name, COUNT(*) FROM pokemon.pokemons INNER JOIN pokemon.types ON pokemon.pokemons.primary_type = pokemon.types.id GROUP BY pokemon.types.name;
+SELECT pokemon.types.name, COUNT(*) FROM pokemons INNER JOIN pokemon.types ON pokemons.primary_type = pokemon.types.id GROUP BY pokemon.types.name;
 
 # How many pokemon at level 100 does each trainer with at least one level 100 pokemone have? (Hint: your query should not display a trainer
 SELECT COUNT(*), pokemon_trainer.pokelevel FROM pokemon_trainer JOIN trainers ON pokemon_trainer.pokemon_id = trainers.trainerID WHERE pokemon_trainer.pokelevel = 100 GROUP BY pokemon_trainer.pokelevel;
