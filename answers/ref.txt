@@ -706,5 +706,4 @@
 | 17 | Ice      |
 | 18 | Flying   |
 +----+----------+
-SELECT name FROM pokemons JOIN pokemon_trainer on pokemons.id = pokemon_id WHERE trainerID = 303;
-SELECT name as Pokemon_name FROM pokemons JOIN pokemon_trainer trainer on pokemons.id = trainer.pokemon_id WHERE trainerID = 303;
+

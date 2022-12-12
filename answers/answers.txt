@@ -32,7 +32,7 @@ SELECT pokemon.types.name, COUNT(*) FROM pokemons INNER JOIN pokemon.types ON po
 SELECT COUNT(pokemon_id), trainerID FROM pokemon_trainer WHERE pokelevel = 100 GROUP BY trainerID;
 
 # How many pokemon only belong to one trainer and no other?
-SELECT pokemon_id, COUNT(*) FROM pokemon_trainer GROUP BY pokemon_id HAVING COUNT(pokemon_id) = 1;
+SELECT pokemons.name, COUNT(*) FROM pokemon_trainer JOIN pokemons ON pokemon_trainer.pokemon_id = pokemons.id GROUP BY pokemon_id HAVING COUNT(trainerID) = 1;
 
 Part 4
 SELECT trainers.trainername 'Trainer', pokemons.name 'Pokemon', pokemon_trainer.pokelevel 'Level', p_types.name 'Primary Type', s_types.name 'Secondary Type' FROM pokemons JOIN types pokemon_types
